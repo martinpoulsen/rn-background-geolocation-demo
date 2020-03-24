@@ -9,6 +9,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import { createAppContainer, NavigationActions, StackActions } from 'react-navigation';
 
+import Issue from './Issue';
+
 import {StyleProvider} from "native-base";
 import Navigator from './Navigator';
 
@@ -16,7 +18,6 @@ import BackgroundGeolocation from "react-native-background-geolocation";
 
 import {registerTransistorAuthorizationListener} from './lib/Authorization';
 
-const AppContainer = createAppContainer(Navigator);
 
 export default class App extends React.Component<{}> {
 
@@ -26,7 +27,7 @@ export default class App extends React.Component<{}> {
 
   render() {
     return (
-      <AppContainer />
+      <Issue />
     );
   }
 }

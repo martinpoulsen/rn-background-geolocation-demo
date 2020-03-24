@@ -11,6 +11,17 @@ import BackgroundFetch from "react-native-background-fetch";
 
 AppRegistry.registerComponent('BGGeolocation', () => App);
 
+const issueHeadlessTask = async (event) => {
+  const state = await BackgroundGeolocation.getState();
+  console.log('IssueHeadlessTask got state: ', state);
+  return Promise.resolve();
+}
+
+AppRegistry.registerHeadlessTask(
+  'IssueHeadlessTask',
+  () => issueHeadlessTask
+);
+
 /**
 * BackgroundGeolocation Headless JS task.
 * For more information, see:  https://github.com/transistorsoft/react-native-background-geolocation/wiki/Android-Headless-Mode

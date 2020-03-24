@@ -3,6 +3,7 @@ package com.transistorsoft.backgroundgeolocation.react;
 import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -13,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
+    private static Context sContext;
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
             @Override
@@ -42,6 +44,9 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
+      Log.d(MainApplication.class.getSimpleName(), "MainApplication # onCreate()");
+      sContext = this;
+
       // Strict mode.  Should be disabled on RELEASE.
         /*
       StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
@@ -61,6 +66,10 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this); // Remove this line if you don't want Flipper enabled
+  }
+
+  public static Context getAppContext() {
+      return sContext;
   }
 
   /**

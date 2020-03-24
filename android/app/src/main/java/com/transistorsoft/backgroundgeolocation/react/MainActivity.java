@@ -1,8 +1,17 @@
 package com.transistorsoft.backgroundgeolocation.react;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(MainActivity.class.getSimpleName(), "MainActivity # onCreate()");
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.
