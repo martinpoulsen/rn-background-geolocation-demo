@@ -14,6 +14,10 @@ AppRegistry.registerComponent('BGGeolocation', () => App);
 const issueHeadlessTask = async (event) => {
   const state = await BackgroundGeolocation.getState();
   console.log('IssueHeadlessTask got state: ', state);
+  await BackgroundGeolocation.start();
+  await BackgroundGeolocation.changePace(true);
+  const stateAfterStart = await BackgroundGeolocation.getState();
+  console.log('IssueHeadlessTask got state after calling start() and changePace(true): ', stateAfterStart);
   return Promise.resolve();
 }
 
